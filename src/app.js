@@ -1,9 +1,13 @@
-async function getWeather() {
-  const response = await fetch('http://api.weatherapi.com/v1/current.json?key=d3ff1b220dbd4e5985695240242202&q=Split&aqi=yes');
+import getWeather from './getWeather';
 
-  const WeatherData = await response.json();
+const btnSearch = document.querySelector('button');
 
-  console.log(WeatherData);
-}
+btnSearch.addEventListener('click', (e) => {
+  e.preventDefault();
 
-getWeather();
+  const searchInp = document.querySelector('#searchInput');
+
+  const city = searchInp.value;
+
+  getWeather(city);
+});

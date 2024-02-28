@@ -30,6 +30,12 @@ module.exports = {
   devServer: {
 
     static: path.join(__dirname, 'dist'),
-
+    proxy: [{
+      '/api': {
+        target: 'http://api.weatherapi.com',
+        changeOrigin: true,
+        pathRewrite: { '^/api': '' },
+      },
+    }],
   },
 };
