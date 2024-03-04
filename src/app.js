@@ -1,13 +1,5 @@
-import getWeather from './getWeather';
+import createAll from './displayWeather';
 
-const btnSearch = document.querySelector('button');
+const containerDiv = document.querySelector('#container');
 
-btnSearch.addEventListener('click', (e) => {
-  e.preventDefault();
-
-  const searchInp = document.querySelector('#searchInput');
-
-  const city = searchInp.value;
-
-  getWeather(city);
-});
+createAll(containerDiv);

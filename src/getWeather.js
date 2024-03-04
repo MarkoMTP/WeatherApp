@@ -1,6 +1,45 @@
-const cityD = document.querySelector('#grad');
+import '../style.css';
 
-export default async function getWeather(cty) {
+function pushCityInfo(Wdata, divForInfo) {
+  // city name
+  const divLocation = document.createElement('div');
+  divLocation.setAttribute('id', 'divLocation');
+
+  const cityTitle = document.createElement('h1');
+
+  cityTitle.textContent = Wdata.location.name;
+
+  divLocation.appendChild(cityTitle);
+  divForInfo.appendChild(divLocation);
+
+  // city temp
+  const divTemp = document.createElement('div');
+  divTemp.setAttribute('id', 'divTemp');
+
+  const cityTemp = document.createElement('h1');
+
+  cityTemp.textContent = `${Wdata.current.temp_c}°C`;
+
+  divForInfo.appendChild(cityTemp);
+
+  // city description of weather
+
+  const cityTextCondition = document.createElement('h1');
+
+  cityTextCondition.textContent = Wdata.current.condition.text;
+
+  divForInfo.appendChild(cityTextCondition);
+
+  // city
+
+  const cityTime = document.createElement('h1');
+
+  cityTime.textContent = Wdata.location.localtime;
+
+  divForInfo.appendChild(cityTime);
+}
+
+export default async function getWeather(cty, div) {
   const baseUrl = 'http://api.weatherapi.com/v1/current.json?key=d3ff1b220dbd4e5985695240242202&q=&aqi=yes';
 
   try {
@@ -10,12 +49,14 @@ export default async function getWeather(cty) {
     const response = await fetch(newUrl);
 
     const WeatherData = await response.json();
+    console.log(WeatherData);
+    // const nameC = WeatherData.location.name;
+    pushCityInfo(WeatherData, div);
+    // pushCityTemp(WeatherData, div);
+    // const currentTemp = WeatherData.current.temp_c;
 
-    const nameC = WeatherData.location.name;
-    cityD.innerHTML = nameC;
-    //   const weatherCondition = WeatherData.current.condition;
-    console.log(nameC);
+    return WeatherData;
   } catch (err) {
-    console.log(err);
+    return console.log(err);
   }
 }

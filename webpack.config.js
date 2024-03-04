@@ -6,6 +6,12 @@ module.exports = {
   entry: {
     app: './src/app.js',
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './index.html',
+      filename: './final.html', // Specify the path to your HTML template
+    }),
+  ],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -15,27 +21,32 @@ module.exports = {
       {
         test: /\.js?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        options: {
-          presets: ['@babel/preset-env'],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
         },
       },
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+      { test: /\.ts$/, use: 'ts-loader' },
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './index.html', // Specify the path to your HTML template
-    }),
-  ],
+  // ...
+  // ...
+  // ...
   devServer: {
-
     static: path.join(__dirname, 'dist'),
-    proxy: [{
-      '/api': {
+    open: 'final.html',
+    port: 8080,
+    proxy: [
+      {
+        context: ['/api'],
         target: 'http://api.weatherapi.com',
         changeOrigin: true,
         pathRewrite: { '^/api': '' },
       },
-    }],
+    ],
   },
+
 };
