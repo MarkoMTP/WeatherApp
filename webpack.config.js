@@ -9,7 +9,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.html',
-      filename: './final.html', // Specify the path to your HTML template
+      filename: './index.html', // Specify the path to your HTML template
     }),
   ],
   output: {
@@ -41,7 +41,7 @@ module.exports = {
   // ...
   devServer: {
     static: path.join(__dirname, 'dist'),
-    open: 'final.html',
+    open: 'index.html',
     port: 8080,
     proxy: [
       {
