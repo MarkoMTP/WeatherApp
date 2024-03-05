@@ -1,3 +1,6 @@
+
+
+
 body {
 
     display: flex;
@@ -22,6 +25,9 @@ flex-direction: column;
     text-align: center;
     background-color: rgb(255, 255, 255);
     border: 1px red solid;
+    background: url('./pexels-eberhard-grossgasteiger-2310713.jpg') ;
+    background-size: cover;
+    background-position: center;
  
 }
 
@@ -29,10 +35,26 @@ flex-direction: column;
 #form {
 position: absolute;
 margin-top:120px ;
-right: 1rem;
-
+right: 5rem;
+display: flex;
+flex-direction: column;
+gap: 5px;
 }
 
+
+#searchInput {
+
+height: 3rem;
+width: 20rem;
+font-size: 2.5rem;
+}
+
+#buttonSbmt {
+border-radius: 25px;
+font-size: 2rem;
+cursor: pointer;
+
+}
 
 #infoDiv {
     width: 100%;
@@ -41,14 +63,66 @@ right: 1rem;
 border: 1px black solid;
 display: flex;
 gap: 50px;
-margin-top:0px ;
 justify-content: space-around;
-
+align-items: center;
+font-size: 2rem
 }
 
 #divLocation {
-    /* position: absolute; */
-/* background-color: aqua */
-
+    position: absolute; 
+    transform: translate(-140%, -60%);
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 1rem;
 
 }
+
+#divTemp {
+
+    position: absolute; 
+    transform: translate(80%, -40%);
+    font-size: 3rem;
+    margin: 20px;
+}
+
+#divTextCondition {
+    width: 30rem;
+    position: absolute; 
+    transform: translate(120%, 20%);
+    display: flex;
+    flex-direction: column;
+    gap: -1rem;
+text-align: center;
+
+}
+
+
+#divIcon {
+    position: absolute; 
+    transform: translate(300%, -120%);
+text-align: center;
+}
+
+#divLocation::before {
+    content: "Location:";
+    position: absolute;
+    transform: translate(-50%, -0%);
+}
+
+#divTemp::before {
+    content: "Temperature:";
+    position: absolute;
+    transform: translate(90%, -150%);
+}
+
+
+#icon  {
+width: 12rem;
+height: 12rem;
+padding-left: 5rem;
+margin: -3rem;
+
+}
+
+
+

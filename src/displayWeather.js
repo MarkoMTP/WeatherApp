@@ -23,6 +23,8 @@ function createForm(div, divForInfo) {
   input1.setAttribute('id', 'searchInput');
   // btn all attr
   buttonSbmt.setAttribute('type', 'button');
+  buttonSbmt.setAttribute('id', 'buttonSbmt');
+
   buttonSbmt.innerHTML = 'Submit';
 
   buttonSbmt.addEventListener('click', (e) => {
@@ -41,7 +43,7 @@ function createForm(div, divForInfo) {
 
 export default function createAll(div) {
   const h1 = document.createElement('h1');
-  h1.textContent = 'Hello';
+  h1.textContent = 'Weather App ';
   h1.style.fontSize = '6rem';
   div.appendChild(h1);
 

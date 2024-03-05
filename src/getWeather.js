@@ -5,11 +5,18 @@ function pushCityInfo(Wdata, divForInfo) {
   const divLocation = document.createElement('div');
   divLocation.setAttribute('id', 'divLocation');
 
+  const description1 = document.createElement('h2');
+
   const cityTitle = document.createElement('h1');
 
   cityTitle.textContent = Wdata.location.name;
 
+  divLocation.appendChild(description1);
   divLocation.appendChild(cityTitle);
+  const cityTime = document.createElement('h1');
+
+  cityTime.textContent = Wdata.location.localtime;
+  divLocation.appendChild(cityTime);
   divForInfo.appendChild(divLocation);
 
   // city temp
@@ -20,23 +27,29 @@ function pushCityInfo(Wdata, divForInfo) {
 
   cityTemp.textContent = `${Wdata.current.temp_c}°C`;
 
-  divForInfo.appendChild(cityTemp);
+  divTemp.appendChild(cityTemp);
+  divForInfo.appendChild(divTemp);
 
   // city description of weather
+  const divTextCondition = document.createElement('div');
+  divTextCondition.setAttribute('id', 'divTextCondition');
 
   const cityTextCondition = document.createElement('h1');
-
   cityTextCondition.textContent = Wdata.current.condition.text;
 
-  divForInfo.appendChild(cityTextCondition);
+  divTextCondition.appendChild(cityTextCondition);
 
-  // city
+  divForInfo.appendChild(divTextCondition);
 
-  const cityTime = document.createElement('h1');
+  // icon Weather
+  const divIcon = document.createElement('div');
+  divIcon.setAttribute('id', 'divIcon');
 
-  cityTime.textContent = Wdata.location.localtime;
-
-  divForInfo.appendChild(cityTime);
+  const conditionImg = document.createElement('img');
+  conditionImg.src = Wdata.current.condition.icon;
+  conditionImg.setAttribute('id', 'icon');
+  divIcon.appendChild(conditionImg);
+  divForInfo.appendChild(divIcon);
 }
 
 export default async function getWeather(cty, div) {
