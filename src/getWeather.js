@@ -63,12 +63,16 @@ export default async function getWeather(cty, div) {
 
     const WeatherData = await response.json();
     console.log(WeatherData);
-    // const nameC = WeatherData.location.name;
-    pushCityInfo(WeatherData, div);
-    // pushCityTemp(WeatherData, div);
-    // const currentTemp = WeatherData.current.temp_c;
 
-    return WeatherData;
+    if (!response.ok) {
+      throw new Error('Failed to fetch weather data. Check the city name and try again.');
+    }
+
+    if (!WeatherData.current) {
+      throw new Error('City does not exist in the API response');
+    }
+
+    pushCityInfo(WeatherData, div);
   } catch (err) {
     return console.log(err);
   }
