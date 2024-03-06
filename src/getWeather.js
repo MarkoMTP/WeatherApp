@@ -73,6 +73,7 @@ export default async function getWeather(cty, div) {
     }
 
     pushCityInfo(WeatherData, div);
+    return WeatherData;
   } catch (err) {
     return console.log(err);
   }
