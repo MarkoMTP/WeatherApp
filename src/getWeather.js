@@ -53,7 +53,7 @@ function pushCityInfo(Wdata, divForInfo) {
 }
 
 export default async function getWeather(cty, div) {
-  const baseUrl = 'http://api.weatherapi.com/v1/current.json?key=d3ff1b220dbd4e5985695240242202&q=&aqi=yes';
+  const baseUrl = 'https://api.weatherapi.com/v1/current.json?key=d3ff1b220dbd4e5985695240242202&q=&aqi=yes';
 
   try {
     const newUrl = new URL(baseUrl);
