@@ -22,7 +22,7 @@ function createForm(div, divForInfo) {
   input1.setAttribute('type', 'text');
   input1.setAttribute('id', 'searchInput');
   // btn all attr
-  buttonSbmt.setAttribute('type', 'button');
+  buttonSbmt.setAttribute('type', 'submit');
   buttonSbmt.setAttribute('id', 'buttonSbmt');
 
   buttonSbmt.innerHTML = 'Submit';
