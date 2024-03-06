@@ -46,7 +46,7 @@ module.exports = {
     proxy: [
       {
         context: ['/api'],
-        target: 'https://api.weatherapi.com',
+        target: 'http://api.weatherapi.com',
         changeOrigin: true,
         pathRewrite: { '^/api': '' },
       },

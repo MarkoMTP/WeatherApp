@@ -59,7 +59,7 @@ export default async function getWeather(cty, div) {
     const newUrl = new URL(baseUrl);
     newUrl.searchParams.set('q', cty);
 
-    const response = await fetch(newUrl);
+    const response = await fetch(newUrl, { mode: 'cors' });
 
     const WeatherData = await response.json();
     console.log(WeatherData);
